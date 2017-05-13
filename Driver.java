@@ -1,11 +1,15 @@
 import java.util.Scanner;
+/***
+*Author: Ezra, 5/13/17
+**/
+
 public class Driver {
 	public static void main(String[]	args)	{
      //game vars
      boolean playAgain=true,player1Turn=true,
      player2Turn=false, isGameOver=false;
      Scanner stdin = new Scanner(System.in);
-	   
+
      do //overall game loop
 	  {
        if(playAgain) //new round
@@ -14,20 +18,20 @@ public class Driver {
          System.out.print("Enter White player's name: ");
          String name = stdin.nextLine();
          Player player1 = new Player(name,"White");
-         
+
          System.out.print("Enter Black player's name: ");
          name = stdin.nextLine();
          Player player2 = new Player(name,"Black");
-         
+
          Board bo= new Board();
-         playAgain=false; 
+         playAgain=false;
        }
-       
+
        while(player1Turn)
        {
          //get starting position
          player1.setPos();
-         
+
          //check what piece is
          player1.checkPieceType(bo.get);
          //set position moved to
