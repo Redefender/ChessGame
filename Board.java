@@ -1,4 +1,3 @@
-
 public class Board {
    private String[][] board;
    public Board()
@@ -7,11 +6,13 @@ public class Board {
       this.newBoard();
       //this.displayBoard();
    }
-   public void get(int y,int x) //tests
+   public void getCord(int y,int x) //tests
    {
       System.out.println("row " + y + ", col" + x + ": " + board[y][x] );
    }
-   
+   public String[][] getBoard()
+   {return board;}
+
    public void newBoard()
    {
      /*String[][] board = {
@@ -22,7 +23,7 @@ public class Board {
       {" "," "," "," "," "," "," "," "},
       {" "," "," "," "," "," "," "," "},
       {"P","P","P","P","P","P","P","P"},
-      {"R","N","B","Q","K","B","N","R"}     
+      {"R","N","B","Q","K","B","N","R"}
    };*/
       board = new String[8][8]; //have board point to array
       board[0][0] = "r";
@@ -66,7 +67,7 @@ public class Board {
       board[7][5] = "B";
       board[7][6] = "N";
       board[7][7] = "R";
-      
+
    }
    public void displayNewBoard()
    {
@@ -78,7 +79,8 @@ public class Board {
          }
          System.out.println();
       }
-    
+
    }
-  
+
+
 }

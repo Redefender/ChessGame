@@ -1,14 +1,20 @@
 import java.util.Scanner;
-/***
-*Author: Ezra, 5/13/17
-**/
-
 public class Driver {
 	public static void main(String[]	args)	{
      //game vars
      boolean playAgain=true,player1Turn=true,
      player2Turn=false, isGameOver=false;
      Scanner stdin = new Scanner(System.in);
+     Player player1=null;
+     Player player2=null;
+     Board bo=null;
+      player1 = new Player();
+    // player1.setPosChosen("a8");
+//     System.out.println(player1.convertRowToIndice());
+//     System.out.println(player1.convertColToIndice());
+//       bo = new Board();
+//       player1.checkPieceType(bo.getBoard());
+//       System.out.println(player1.getPieceType());
 
      do //overall game loop
 	  {
@@ -17,24 +23,31 @@ public class Driver {
          //get playerinfo
          System.out.print("Enter White player's name: ");
          String name = stdin.nextLine();
-         Player player1 = new Player(name,"White");
+         player1 = new Player(name,"White");
 
          System.out.print("Enter Black player's name: ");
          name = stdin.nextLine();
-         Player player2 = new Player(name,"Black");
+         player2 = new Player(name,"Black");
 
-         Board bo= new Board();
+         bo= new Board();
+
          playAgain=false;
+
        }
+
+
 
        while(player1Turn)
        {
          //get starting position
+
          player1.setPos();
 
-         //check what piece is
-         player1.checkPieceType(bo.get);
+
+         player1.checkPieceType(bo.getBoard()); //gets put into
+         System.out.print(player1.getPieceType());//player field
          //set position moved to
+
          //move on board
          //display
          //set turn for player2
@@ -61,5 +74,5 @@ public class Driver {
 	  } while(playAgain);
 
 
-	}
+	}//end main
 }
