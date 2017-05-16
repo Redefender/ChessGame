@@ -2,8 +2,9 @@ import java.util.Scanner;
 public class Driver {
 	public static void main(String[]	args)	{
      //game vars
-     boolean playAgain=true,player1Turn=true,
-     player2Turn=false, isGameOver=false;
+     boolean continueGame=true,player1Turn=true,
+     player2Turn=false, isGameOver=false,
+     newRound=true;
      Scanner stdin = new Scanner(System.in);
      Player player1=null;
      Player player2=null;
@@ -26,7 +27,7 @@ public class Driver {
 
      do //overall game loop
 	  {
-       if(playAgain) //new round
+       if(newRound) 
        {
          //get playerinfo
          System.out.print("Enter White player's name: ");
@@ -39,7 +40,7 @@ public class Driver {
          black = new Piece("Black");
          bo= new Board();
 
-         playAgain=false;
+         newRound=false;
 
        }
 
@@ -48,7 +49,7 @@ public class Driver {
        while(player1Turn)
        {
          //get starting position
-
+         System.out.println(player1.getName() + "'s turn!");
          player1.setPos();
 
 
@@ -57,7 +58,8 @@ public class Driver {
          //set position moved to (through piece object white)
          white.getMove();
          //move on board
-         bo.drawMove(player1.getPosChosen(),white.getPosTo(),player1.getPieceType());
+         bo.drawMove(player1.getPosChosen(),white.getPosTo()
+         ,player1.getPieceType());
          //fields
         //  System.out.println("posChosen: " + player1.getPosChosen());
 //          System.out.println("posTo: " + white.getPosTo());
@@ -73,12 +75,16 @@ public class Driver {
        }//end player1
        while(player2Turn)
        {
+         System.out.println(player2.getName() + "'s turn!");
          player2.setPos();
          player2.checkPieceType(bo.getBoard()); 
          black.getMove();
-         player1.getPieceType();
+         player2.getPieceType();
          //bo.getCoord(ValidatePiece.convertRowToIndice(white.getPosTo()),ValidatePiece.convertColToIndice(white.getPosTo()));
          //display
+         bo.drawMove(player2.getPosChosen(),
+         black.getPosTo(),player2.getPieceType());
+         
          bo.displayBoard();
          //set turn for player1
          player1Turn=true;
@@ -91,11 +97,16 @@ public class Driver {
          userInput = stdin.nextLine().toUpperCase();
          if("Y".equals(userInput))
          {
-            playAgain=true;
+            newRound=true;
          }
+         else
+         {
+            continueGame=false;
+         }
+        
        }
 
-	  } while(playAgain);
+	  } while(continueGame);
 
 
 	}//end main
