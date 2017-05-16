@@ -3,6 +3,8 @@ public class Piece {
     private String color;
     private String symbol;
     public String positionTo;
+    public Piece(){};
+    public Piece(String color){this.color = color;}
     public Piece(String color,String symbol)
     {
       this.color = color;
@@ -23,7 +25,7 @@ public class Piece {
 		{
 			try
 			{
-			  System.out.print("Enter position: ");
+			  System.out.print("Enter position to: ");
 			  testPos =	stdin.nextLine();
 			  if(testPos.length() != 2)
 			   throw new Exception("Error! Enter only rank and file: ");
@@ -39,6 +41,10 @@ public class Piece {
 				System.out.print(e.getMessage());
 
 			}
+         positionTo = testPos;
 		}
+     
     }
+    public String getPosTo(){return positionTo;}
+
 }

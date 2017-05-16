@@ -6,7 +6,7 @@ public class Board {
       this.newBoard();
       //this.displayBoard();
    }
-   public void getCord(int y,int x) //tests
+   public void getCoord(int y,int x) //tests
    {
       System.out.println("row " + y + ", col" + x + ": " + board[y][x] );
    }
@@ -69,17 +69,35 @@ public class Board {
       board[7][7] = "R";
 
    }
-   public void displayNewBoard()
-   {
+   public void displayBoard()
+   {      
+      
       for(int vertical=0;vertical<8;vertical++)
       {
          for(int horizontal=0;horizontal<8;horizontal++)
          {
-            System.out.print(board[vertical][horizontal]);
+            System.out.print(this.board[vertical][horizontal]);
          }
          System.out.println();
       }
 
+   }
+   public void drawMove(String posChosen, String posTo, String pieceType)
+   {
+      int posChosenRow = ValidatePiece.convertRowToIndice(posChosen);
+      int posChosenCol = ValidatePiece.convertColToIndice(posChosen);
+      int posToRow = ValidatePiece.convertRowToIndice(posTo);
+      int posToCol = ValidatePiece.convertColToIndice(posTo);
+      
+      board[posChosenRow][posChosenCol] = ".";
+      board[posToRow][posToCol] = pieceType;
+      
+      //System.out.println("row: " + posToRow );
+     // System.out.println("col: " + posToCol);
+      
+  
+    
+      
    }
 
 
